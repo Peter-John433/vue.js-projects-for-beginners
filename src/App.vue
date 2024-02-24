@@ -2,6 +2,7 @@
   
   <div>
     <div class="text-1">
+        <h1>props and $emit()</h1>
         This project give you more understanding on how to use props and emits in your vue project in the future.
     </div>
       <div class="food-items">
@@ -19,6 +20,7 @@
   <!-- fallthrough attribute project -->
   <div> 
     <div class="text-1">
+       <h1>fallthrough attri</h1>
         this project give us clear understnading on how to use the fallthrough attribute,fallthrough is an attribute that is pass to the component without it been declare in the recieving component
     </div>
     <div class="text-1">
@@ -47,6 +49,9 @@
   <!-- vue slot -->
     <div>
       <div class="text-1">
+        <h1>
+          vue slot
+        </h1>
          this project give you clear understanding how to use vue slot in your project.
         <br>vue slot  allow us to reuse component with different structure, so we can customize the content of our components. vue slot is use to send content from parent component to the child component,on like props thats been recieved in the child component, vue slot is used as a placeholder of the content sent from the parent component so that when the project is display on the webpage the slot is been replaced with the content sent. 
       </div>
@@ -83,15 +88,34 @@
       </footer>
     </div>
   <!-- closed -->
+
+  <!-- vue v-slot -->
+    <div>
+        <div class="text-1">
+          <h1>v-slot and name slot</h1>
+            this project give clear knowledge on how to use v-slot in your compenent, v-slot are use in the parent comp to direct your contents to the right path in your child component, for this to be successful you will have to name the slot in your child component and use the v-slot directive in your parent compenent.
+        </div>
+
+          <fall-slot>
+             <template #sideSlot>
+              <div>
+                  using v-slot in my template
+              </div>
+             </template>
+            <p>default slot</p>
+          </fall-slot>
+    </div>
+  <!-- closed -->
   
 </template>
 
 <script>
    import FoodItems from './components/FoodItems.vue';
    import Fall from './components/Fall.vue';
-   import MySlot from './components/MySLot.vue'
+   import MySlot from './components/MySLot.vue';
+   import FallSlot from './FallSlot.vue'
   export default {
-    components: { FoodItems, Fall, 'my-slot': MySlot },
+    components: { FoodItems, Fall, 'my-slot': MySlot, 'fall-slot': FallSlot },
     data() {
       return{
         // for foodItems
@@ -194,6 +218,7 @@
   /* closed */
 </style>
 <!-- 
+   the root component ofr this project is app.vue while the child component is FoodItem.vue
   in this tutorial we learn how to 
 
   1 use option api to store datas
@@ -227,3 +252,47 @@
 
   Props must be declared in the component, while emits are just recommended to be documented.
   -->
+
+  <!-- 
+    THE PARENT COMPONENT FOR THIS PROJECT IS APP.VUE WHILE THE CHILD COMPONENT IS FALL.VUE
+    
+    In this project you will learn how to use the fallthrough attribute in your vue components,but firstly let explain what fallthrough means in vue js
+
+    in a simple term fallthrough attribute are attribute that  will automatically passed down to any nested components, fallthrough are not directly delcare in the child component yet have access to the child component
+    fallthrough are typically class,style and v-on  directives that can be used on any element
+    they allow us to add classes, apply styles ,and bind events to elements dynamically 
+    fall through attributes do not show up in the browser but will affect how the page looks
+
+    1. fallthrough are merge with class or style attribute from child component
+
+   -->
+
+   <!-- 
+    THE PARENT COMP FOR THIS PROJ IS APP.VUE WHILE THE CHILD COMP IS MYSLOT.VUE
+
+    this project practice give you clear knowledge about vue slot but firstly we have to understand what vue slot means in the project
+
+    VUE SLOT: is the process of passing content to the child component from the parent component, 
+    vue slot act as the placeholder for the contents passed from the parent comp to child comp so that when the page is load on the website the vue slot will be replace by the content sent from the parent comp.
+    
+    quick way to use vue slot  is to use <slot> tag inside your child components template 
+      -you don't need to define anything special in your child component 
+      -the content passed into the <slot> tags goes where ever the <slot>  tag is placed in the child component 
+      - duplicate the component name in your parent comp then add some content and it will be place again in the child compnent 
+      - again add another slot name in parent comp without adding any content to it then go straight to your child comp and add content in youe vue slot and it will be replace on the webpage when the page is load. this process is called fallback in vue js
+    -->
+
+    <!-- 
+      V-SLOT AND NAME-SLOT
+
+      V-SLOT: is use for flexible and reusable  layouts, v-slot is use along with name-slot
+      
+      -name-slot is use in the child component to target a particular slot especially where slots are reused in a component
+      -v-slot is use to direct the content passed from parent component to the named slot in the child component
+      - nane is an attribute used in the slot tag in the child comp
+      -v-slot is a directive that bind your name slot so the content passed csn be direct to the exact slot
+      - if a slot tag is used in the child component without name attribute, the content passed from the parent will not be able to locate it but if the v-slot in the parent component is bind as default then the text will be replace in the child comp
+      - comp name without v-slot directive send content directly to a slot tag in child comp without name tag
+      - v-slot directive can also be use on template to send information to a particular name slot
+      - v-slot as the shorthand # e.g #default
+     -->
