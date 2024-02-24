@@ -33,6 +33,14 @@
         :giveText="gaveText"
         ></slot>
     </div>
+    <div>
+        <slot
+        name="bottomSide" 
+        :giveMe="pray"
+        >
+
+        </slot>
+    </div>
 </template>
 
 <script>
@@ -61,7 +69,8 @@
                     }
                 ],
                 myWorld: 'create in me',
-                gaveText: 'using name slot in scoped slot'
+                gaveText: 'using name slot in scoped slot',
+                pray: 'give it to her'
             }
         }
         

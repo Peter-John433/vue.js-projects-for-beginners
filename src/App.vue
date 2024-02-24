@@ -141,10 +141,37 @@
     </div>
 
     <div>
-      <my-scope-slot v-slot:rightSide="rightText">
-        <div>{{ rightText.giveText }}</div>
+      <my-scope-slot>
+        <template v-slot:rightSide="rightText">
+          <div>{{ rightText.giveText }}</div>
+        </template>
+
+        <template #bottomSide="runIt">
+          <div>
+             {{ runIt.giveMe }}
+          </div>
+        </template>
       </my-scope-slot>
     </div>
+  <!-- closed -->
+
+  <!-- dynamic component -->
+     <div>
+       <div class="text-1">
+         <h1>vue dynamic component</h1>
+       </div>
+        <dynamic-comp />
+     </div>
+  <!-- closed -->
+
+  <!-- vue teleport -->
+      <div>
+        <div class="text-1">
+          <h1>vue teleport</h1>
+        </div>
+          
+         <tele-comp></tele-comp>
+      </div>
   <!-- closed -->
   
 </template>
@@ -154,15 +181,20 @@
    import Fall from './components/Fall.vue';
    import MySlot from './components/MySLot.vue';
    import FallSlot from './FallSlot.vue';
-    import MySLot from './components/MySLot.vue';
-    import MyScopeSlot from './components/MyScopeSlot.vue';
+   import MySLot from './components/MySLot.vue';
+   import MyScopeSlot from './components/MyScopeSlot.vue';
+   import DynamicComp from './components/mycomponent/DynamicComp.vue';
+   import TeleComp from './components/telecomp/TeleComp.vue';
+
   export default {
     components: { 
             FoodItems, 
             Fall, 
             'my-slot': MySlot, 
             'fall-slot': FallSlot,
-            'my-scope-slot': MyScopeSlot
+            'my-scope-slot': MyScopeSlot,
+            'dynamic-comp': DynamicComp,
+            'tele-comp': TeleComp
           },
     data() {
       return{
