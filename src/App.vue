@@ -106,6 +106,46 @@
           </fall-slot>
     </div>
   <!-- closed -->
+
+  <!-- use of scope slot in parent comp -->
+    <div>
+       <div class="text-1">
+        <h1>scope slot</h1>
+       </div>
+       <div class="scoped-slot">
+           <my-scope-slot v-slot="myText">
+              {{ myText.text }}
+           </my-scope-slot>
+       </div>
+       <div class="slot-array">
+         <my-scope-slot v-slot="food">
+          <h2>{{ food.item }}</h2>
+        </my-scope-slot>
+       </div>
+    </div>
+
+    <div>
+      <my-scope-slot v-slot="check">
+        <div class="object-slot">
+           <h3>{{ check.foodName }}</h3>
+           <p>{{ check.foodDes }}</p>
+        </div>
+      </my-scope-slot>
+    </div>
+
+    <div>
+       <my-scope-slot v-slot="writeText">
+         <div>{{ writeText.dynamicText }}</div>
+         <div>{{ writeText.jumpText }}</div>
+       </my-scope-slot>
+    </div>
+
+    <div>
+      <my-scope-slot v-slot:rightSide="rightText">
+        <div>{{ rightText.giveText }}</div>
+      </my-scope-slot>
+    </div>
+  <!-- closed -->
   
 </template>
 
@@ -113,9 +153,17 @@
    import FoodItems from './components/FoodItems.vue';
    import Fall from './components/Fall.vue';
    import MySlot from './components/MySLot.vue';
-   import FallSlot from './FallSlot.vue'
+   import FallSlot from './FallSlot.vue';
+    import MySLot from './components/MySLot.vue';
+    import MyScopeSlot from './components/MyScopeSlot.vue';
   export default {
-    components: { FoodItems, Fall, 'my-slot': MySlot, 'fall-slot': FallSlot },
+    components: { 
+            FoodItems, 
+            Fall, 
+            'my-slot': MySlot, 
+            'fall-slot': FallSlot,
+            'my-scope-slot': MyScopeSlot
+          },
     data() {
       return{
         // for foodItems
@@ -214,8 +262,32 @@
       text-align: center;
     }
 
-    
   /* closed */
+
+  .scoped-slot{
+     background-color: pink;
+     padding: 10px;
+     font-size: 1rem;
+     font-weight: bold;
+     font-family: Arial, Helvetica, sans-serif;
+  }
+
+   .slot-array h2{
+     color: white;
+     display: flex;
+     flex-direction: column;
+     width: 120px;
+     margin: 10px;
+     background-color: green;
+     text-align: center;
+     padding: 10px;
+     height: auto;
+  }
+  .object-slot{
+    background-color: lightgray;
+    margin: 10px;
+    padding: 10px;
+  }
 </style>
 <!-- 
    the root component ofr this project is app.vue while the child component is FoodItem.vue
